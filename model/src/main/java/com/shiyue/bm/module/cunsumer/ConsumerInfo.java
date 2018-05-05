@@ -6,28 +6,58 @@ import java.util.Date;
  * 客户信息
  */
 public class ConsumerInfo {
-    private String id;
+    private Long id;
     private String name;
+    /**
+     * 机构
+     */
     private String organization;
+    /**
+     * 职位
+     */
     private String placeOfWork;
+    /**
+     * 手机号
+     */
     private String cellPhone;
     private String telephone;
     private String email;
+    /**
+     * 主QQ
+     */
     private InstantMessage primaryQQ;
+    /**
+     * 备用QQ
+     */
     private InstantMessage standbyQQ;
+    /**
+     * 主微信号
+     */
     private InstantMessage primaryWeChat;
+    /**
+     * 备用微信号
+     */
     private InstantMessage standbyWeChat;
     private String address;
     private Date birthday;
+    /**
+     * 生日提醒
+     */
     private String birthdayRemind;
+    /**
+     * 拜访日
+     */
     private Date visitDay;
+    /**
+     * 拜访提醒
+     */
     private String visitDayRemind;
 
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
-    public ConsumerInfo setId(String id) {
+    public ConsumerInfo setId(Long id) {
         this.id = id;
         return this;
     }

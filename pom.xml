@@ -22,6 +22,7 @@
         <module>consumer</module>
         <module>bootstrap</module>
         <module>model</module>
+        <module>sysManager</module>
     </modules>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
