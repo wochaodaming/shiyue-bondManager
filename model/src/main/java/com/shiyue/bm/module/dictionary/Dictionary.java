@@ -1,9 +1,11 @@
 package com.shiyue.bm.module.dictionary;
 
+import java.io.Serializable;
+
 /**
  * 数据字典
  */
-public class Dictionary {
+public class Dictionary implements Serializable {
     private Long id;
     /**
      * 分组
@@ -17,6 +19,10 @@ public class Dictionary {
      * 备注
      */
     private String comment;
+    /**
+     * 排位顺序
+     */
+    private int order;
 
     public Long getId() {
         return id;
@@ -51,6 +57,15 @@ public class Dictionary {
 
     public Dictionary setComment(String comment) {
         this.comment = comment;
+        return this;
+    }
+
+    public int getOrder() {
+        return order;
+    }
+
+    public Dictionary setOrder(int order) {
+        this.order = order;
         return this;
     }
 }
