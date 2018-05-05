@@ -1,4 +1,4 @@
-package com.shiyue.bm.consumer.module;
+package com.shiyue.bm.module.cunsumer;
 
 import java.util.Date;
 

@@ -21,6 +21,7 @@
         <module>bond</module>
         <module>consumer</module>
         <module>bootstrap</module>
+        <module>model</module>
     </modules>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
