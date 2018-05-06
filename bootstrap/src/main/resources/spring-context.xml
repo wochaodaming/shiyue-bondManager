@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ Copyright (C) 2015 Baidu, Inc. All Rights Reserved.
+  -->
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:task="http://www.springframework.org/schema/task"
+       xmlns="http://www.springframework.org/schema/beans"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd
+       http://www.springframework.org/schema/mvc
+       http://www.springframework.org/schema/mvc/spring-mvc.xsd
+       http://www.springframework.org/schema/aop
+	   http://www.springframework.org/schema/aop/spring-aop.xsd
+       http://www.springframework.org/schema/task
+       http://www.springframework.org/schema/task/spring-task-4.0.xsd">
+
+    <!-- 这里指定为CGLIB模式 -->
+    <aop:aspectj-autoproxy proxy-target-class="true"/>
+    <task:executor id="executor" pool-size="5"/>
+    <task:scheduler id="scheduler" pool-size="15"/>
+    <task:annotation-driven executor="executor" scheduler="scheduler"/>
+
+    <import resource="db.xml"/>
+
+    <bean class="com.baidu.ark.sche.core.log.proxy.GodEyeLogAspect"/>
+
+    <!-- 顺序加载各个模块,提升Spring的加载速度 -->
+    <context:component-scan base-package="com.baidu.ark.sche.core.*"/>
+    <context:component-scan base-package="com.baidu.ark.sche.executor.*"/>
+    <context:component-scan base-package="com.baidu.ark.sche.domain.*"/>
+    <context:component-scan base-package="com.baidu.ark.sche.dto.*"/>
+    <context:component-scan base-package="com.baidu.ark.sche.app.*"/>
+    <context:component-scan base-package="com.baidu.ark.sche.instance.*"/>
+    <context:component-scan base-package="com.baidu.ark.sche.resource.*"/>
+    <context:component-scan base-package="com.baidu.ark.sche.operatormaster.*"/>
+    <context:component-scan base-package="com.baidu.ark.sche.imservice.*"/>
+    <context:component-scan base-package="com.baidu.ark.sche.operation.*"/>
+    <context:component-scan base-package="com.baidu.ark.sche.monitor.*"/>
+
+    <!-- 注册拦截器 -->
+    <mvc:interceptors>
+        <bean class="com.baidu.ark.sche.core.mvc.interceptor.ForwardInterceptor"/>
+        <bean class="com.baidu.ark.sche.core.mvc.interceptor.OperatorInterceptor"/>
+    </mvc:interceptors>
+
+    <!--  定时的存活日志 -->
+    <bean class="com.baidu.ark.sche.core.system.LiveMonitor"/>
+</beans>
