@@ -1,4 +1,4 @@
-package com.shiyue.bm.sysmanger.dictionary;
+package com.shiyue.bm.sysmanger.dictionary.dao;
 
 import com.shiyue.bm.module.dictionary.Dictionary;
 
@@ -10,4 +10,6 @@ public interface DictionaryDao {
     List<Dictionary> query(String group);
 
     List<Long> update(List<Dictionary> dictList);
+
+    List<Long> delete(List<Long> ids);
 }

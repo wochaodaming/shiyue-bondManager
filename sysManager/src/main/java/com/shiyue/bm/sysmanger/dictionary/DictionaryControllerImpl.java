@@ -1,14 +1,12 @@
 package com.shiyue.bm.sysmanger.dictionary;
 
 import com.shiyue.bm.module.dictionary.Dictionary;
-import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
+import org.springframework.stereotype.Controller;
 
 import java.util.List;
 
-@Repository
-@Transactional
-public class DictionaryDaoImpl implements DictionaryDao {
+@Controller
+public class DictionaryControllerImpl implements DictionaryController {
     @Override
     public List<Long> insert(List<Dictionary> dictList) {
         return null;
@@ -21,6 +19,16 @@ public class DictionaryDaoImpl implements DictionaryDao {
 
     @Override
     public List<Long> update(List<Dictionary> dictList) {
+        return null;
+    }
+
+    @Override
+    public Long delete(Long id) {
+        return null;
+    }
+
+    @Override
+    public List<Long> delete(List<Long> ids) {
         return null;
     }
 }
