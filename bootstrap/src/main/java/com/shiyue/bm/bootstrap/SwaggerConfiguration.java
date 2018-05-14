@@ -29,14 +29,14 @@ import static springfox.documentation.builders.PathSelectors.regex;
 @EnableAdminServer
 public class SwaggerConfiguration extends WebMvcConfigurerAdapter {
     /**
+     *
      * PS:解决spring-boot admin与swagger在web注册上的冲突。
      * SpringBoot默认已经将classpath:/META-INF/resources/和classpath:/META-INF/resources/webjars/映射
-     * 所以该方法不需要重写，如果在SpringMVC中，可能需要重写定义（我没有尝试）
-     * 重写该方法需要 extends WebMvcConfigurerAdapter
+     *
      */
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("swagger-ui.html")
+        registry.addResourceHandler("swagger-ui.html") // http:Ip:port/swagger-ui.html
                 .addResourceLocations("classpath:/META-INF/resources/");
 
         registry.addResourceHandler("/webjars/**")
@@ -57,7 +57,7 @@ public class SwaggerConfiguration extends WebMvcConfigurerAdapter {
                 .forCodeGeneration(true)
                 .pathMapping("/") // base，最终调用接口后会和paths拼接在一起
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("com.baidu.ark.sche"))
+                .apis(RequestHandlerSelectors.basePackage("com.shiyue.bm"))
                 .paths(or(regex("/.*"))) // 过滤的接口
                 .build()
                 .apiInfo(testApiInfo());
@@ -73,21 +73,21 @@ public class SwaggerConfiguration extends WebMvcConfigurerAdapter {
                 .forCodeGeneration(false)
                 .pathMapping("/")
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("com.baidu.ark.sch"))
+                .apis(RequestHandlerSelectors.basePackage("com.shiyue.bm"))
                 .paths(or(regex("/op/.*"))) // 过滤的接口
                 .build()
                 .apiInfo(demoApiInfo());
     }
 
     private ApiInfo testApiInfo() {
-        Contact contact = new Contact("李胜浩", "", "lishenghao01@baidu.com");
-        ApiInfo apiInfo = new ApiInfo("Ark调度平台", // 大标题
-                "AS的Rest接口", // 小标题
+        Contact contact = new Contact("毛利小林", "", "lishenghao@aliyun.com");
+        ApiInfo apiInfo = new ApiInfo("债券管理系统", // 大标题
+                "BondManager的Rest接口", // 小标题
                 "2.0", // 版本
                 "NO terms of service",
                 contact, // 作者
-                "百度运维开发者中心", // 链接显示文字
-                "http://saas.baidu.com", // 网站链接
+                "毛利小林", // 链接显示文字
+                "https://www.baidu.com", // 网站链接
                 new ArrayList<>()
         );
 
@@ -95,14 +95,14 @@ public class SwaggerConfiguration extends WebMvcConfigurerAdapter {
     }
 
     private ApiInfo demoApiInfo() {
-        Contact contact = new Contact("李胜浩", "", "lishenghao01@baidu.com");
-        ApiInfo apiInfo = new ApiInfo("Ark调度平台", // 大标题
-                "AS的Rest接口", // 小标题
+        Contact contact = new Contact("毛利小林", "", "lishenghao@aliyun.com");
+        ApiInfo apiInfo = new ApiInfo("债券管理系统", // 大标题
+                "BondManager的Rest接口", // 小标题
                 "2.0", // 版本
                 "NO terms of service",
                 contact, // 作者
-                "百度运维开发者中心", // 链接显示文字
-                "http://saas.baidu.com", // 网站链接
+                "毛利小林", // 链接显示文字
+                "https://www.baidu.com", // 网站链接
                 new ArrayList<>()
         );
 

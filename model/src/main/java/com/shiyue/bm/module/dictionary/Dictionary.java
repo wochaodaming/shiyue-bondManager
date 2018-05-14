@@ -1,5 +1,7 @@
 package com.shiyue.bm.module.dictionary;
 
+import com.shiyue.bm.core.datetime.IopDate;
+
 import java.io.Serializable;
 
 /**
@@ -10,19 +12,32 @@ public class Dictionary implements Serializable {
     /**
      * 分组
      */
-    private String group;
+    private String configGroup;
     /**
      * 值
      */
-    private String value;
+    private String configValue;
     /**
      * 备注
      */
-    private String comment;
+    private String configComment;
     /**
      * 排位顺序
      */
-    private int order;
+    private int configOrder = 0;
+    /**
+     * 更新时间
+     */
+    private IopDate updatetime;
+
+    public IopDate getUpdatetime() {
+        return updatetime;
+    }
+
+    public Dictionary setUpdatetime(IopDate updatetime) {
+        this.updatetime = updatetime;
+        return this;
+    }
 
     public Long getId() {
         return id;
@@ -33,39 +48,39 @@ public class Dictionary implements Serializable {
         return this;
     }
 
-    public String getGroup() {
-        return group;
+    public String getConfigGroup() {
+        return configGroup;
     }
 
-    public Dictionary setGroup(String group) {
-        this.group = group;
+    public Dictionary setConfigGroup(String configGroup) {
+        this.configGroup = configGroup;
         return this;
     }
 
-    public String getValue() {
-        return value;
+    public String getConfigValue() {
+        return configValue;
     }
 
-    public Dictionary setValue(String value) {
-        this.value = value;
+    public Dictionary setConfigValue(String configValue) {
+        this.configValue = configValue;
         return this;
     }
 
     public String getComment() {
-        return comment;
+        return configComment;
     }
 
     public Dictionary setComment(String comment) {
-        this.comment = comment;
+        this.configComment = comment;
         return this;
     }
 
-    public int getOrder() {
-        return order;
+    public int getConfigOrder() {
+        return configOrder;
     }
 
-    public Dictionary setOrder(int order) {
-        this.order = order;
+    public Dictionary setConfigOrder(int configOrder) {
+        this.configOrder = configOrder;
         return this;
     }
 }

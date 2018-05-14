@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<!-- 常用的Pattern变量,大家可打开该pattern进行输出观察 -->
+<configuration debug="true" scan="true" scanPeriod="30 seconds">
+    <include resource="org/springframework/boot/logging/logback/base.xml"/>
+    <jmxConfigurator/>
+
+    <!-- 按日期和大小区分的滚动日志 -->
+    <!-- 根日志。依赖的第三方框架、其他未定义的模块的日志输出 -->
+    <appender name="ROOT-OUT" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>log/bm.root.log</file>
+
+        <encoder>
+            <pattern>
+                %d{yyyy-MM-dd HH:mm:ss} %t#%class-%method\(%line\) %logger [%X{requestId}] %level - %m%n
+            </pattern>
+        </encoder>
+
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>INFO</level>
+        </filter>
+
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- rollover daily -->
+            <fileNamePattern>log/bm.root-%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+
+            <!-- keep 7 days' worth of history capped at 20GB total size -->
+            <maxHistory>10</maxHistory>
+            <totalSizeCap>1GB</totalSizeCap>
+
+            <timeBasedFileNamingAndTriggeringPolicy
+                    class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <!-- or whenever the file size reaches 100MB -->
+                <maxFileSize>100MB</maxFileSize>
+            </timeBasedFileNamingAndTriggeringPolicy>
+
+        </rollingPolicy>
+
+    </appender>
+
+    <logger name="Running" level="debug">
+        <appender-ref ref="ROOT-OUT"/>
+    </logger>
+    <root level="warn">
+        <appender-ref ref="ROOT-OUT"/>
+    </root>
+</configuration>

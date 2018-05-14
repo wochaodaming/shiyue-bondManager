@@ -1,6 +1,8 @@
 package com.shiyue.bm.sysmanger.dictionary.dao;
 
+import com.shiyue.bm.core.datetime.IopDate;
 import com.shiyue.bm.module.dictionary.Dictionary;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +25,7 @@ public class DictionaryDaoImpl implements DictionaryDao {
             DictionaryMapper mapper = session.getMapper(DictionaryMapper.class);
             List<Long> ids = new ArrayList<>();
             for (Dictionary dict : dictList) {
+                dict.setUpdatetime(new IopDate());
                 Long id = mapper.insertDictionary(dict);
                 dict.setId(id);
                 ids.add(id);
@@ -35,6 +38,9 @@ public class DictionaryDaoImpl implements DictionaryDao {
 
     @Override
     public List<Dictionary> query(String group) {
+        if (StringUtils.isBlank(group)) {
+            return new ArrayList<>();
+        }
         SqlSession session = this.sqlSessionFactory.openSession();
         try {
             DictionaryMapper mapper = session.getMapper(DictionaryMapper.class);
@@ -53,6 +59,7 @@ public class DictionaryDaoImpl implements DictionaryDao {
             List<Long> ids = new ArrayList<>();
             for (Dictionary dict :
                     dictList) {
+                dict.setUpdatetime(new IopDate());
                 ids.add(mapper.updateDictionary(dict));
             }
             return ids;

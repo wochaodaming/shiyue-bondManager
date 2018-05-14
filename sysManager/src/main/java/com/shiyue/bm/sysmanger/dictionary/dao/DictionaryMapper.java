@@ -13,15 +13,16 @@ public interface DictionaryMapper {
     @Deprecated
     List<Long> insertDictionary(List<Dictionary> dictList);
 
-    @Update("update t_dictionary set group=#{group}, value=#{value}, comments=#{comments} where id=#{id}")
+    @Update("update dictionary set configGroup=#{configGroup}, configValue=#{configValue}, "
+            + "configComment=#{configComment}, configOrder=#{configOrder} where id=#{id}")
     Long updateDictionary(Dictionary dict);
 
     @Deprecated
     Long updateDictionary(List<Dictionary> dictList);
 
-    @Select("select * from t_dictionary where group=#{group}")
-    List<Dictionary> selectDictionaryByGroup(@Param("group") String group);
+    @Select("select * from dictionary where configGroup=#{configGroup}")
+    List<Dictionary> selectDictionaryByGroup(@Param("configGroup") String group);
 
-    @Delete("delete from t_dictionary where id=#{id}")
+    @Delete("delete from dictionary where id=#{id}")
     Long deleteDictionary(@Param("id") Long id);
 }

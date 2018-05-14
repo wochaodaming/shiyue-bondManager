@@ -12,5 +12,12 @@
 
     <artifactId>model</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>com.shiyue.bondmanager</groupId>
+            <artifactId>core</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
 
 </project>

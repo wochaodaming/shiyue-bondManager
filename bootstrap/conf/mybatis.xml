@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <typeHandlers>
+        <!--<typeHandler handler="com.baidu.ark.sche.domain.app.typehandler.ResourceHandler"/>-->
+        <typeHandler handler="com.shiyue.bm.core.datetime.IopDateHandler"/>
+    </typeHandlers>
+
+    <mappers>
+        <!--<mapper class="com.baidu.ark.sche.instance.repository.ScInstanceRepository"/>-->
+        <mapper class="com.shiyue.bm.sysmanger.dictionary.dao.DictionaryMapper"/>
+    </mappers>
+</configuration>

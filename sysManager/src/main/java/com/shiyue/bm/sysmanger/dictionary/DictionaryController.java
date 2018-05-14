@@ -1,14 +1,15 @@
 package com.shiyue.bm.sysmanger.dictionary;
 
+import com.shiyue.bm.module.base.BaseResponse;
 import com.shiyue.bm.module.dictionary.Dictionary;
 
 import java.util.List;
 
 public interface DictionaryController {
 
-    List<Long> insert(List<Dictionary> dictList);
+    BaseResponse<List<Long>> insert(List<Dictionary> dictList);
 
-    List<Dictionary> query(String group);
+    BaseResponse<List<Dictionary>> query(String group);
 
     List<Long> update(List<Dictionary> dictList);
 

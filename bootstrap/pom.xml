@@ -12,5 +12,32 @@
 
     <artifactId>bootstrap</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>com.shiyue.bondmanager</groupId>
+            <artifactId>core</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>com.shiyue.bondmanager</groupId>
+            <artifactId>bond</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>com.shiyue.bondmanager</groupId>
+            <artifactId>model</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>com.shiyue.bondmanager</groupId>
+            <artifactId>consumer</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>com.shiyue.bondmanager</groupId>
+            <artifactId>sysManager</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
 
 </project>

@@ -27,27 +27,16 @@
 
     <import resource="db.xml"/>
 
-    <bean class="com.baidu.ark.sche.core.log.proxy.GodEyeLogAspect"/>
+    <bean class="com.shiyue.bm.core.log.proxy.GodEyeLogAspect"/>
 
     <!-- 顺序加载各个模块,提升Spring的加载速度 -->
-    <context:component-scan base-package="com.baidu.ark.sche.core.*"/>
-    <context:component-scan base-package="com.baidu.ark.sche.executor.*"/>
-    <context:component-scan base-package="com.baidu.ark.sche.domain.*"/>
-    <context:component-scan base-package="com.baidu.ark.sche.dto.*"/>
-    <context:component-scan base-package="com.baidu.ark.sche.app.*"/>
-    <context:component-scan base-package="com.baidu.ark.sche.instance.*"/>
-    <context:component-scan base-package="com.baidu.ark.sche.resource.*"/>
-    <context:component-scan base-package="com.baidu.ark.sche.operatormaster.*"/>
-    <context:component-scan base-package="com.baidu.ark.sche.imservice.*"/>
-    <context:component-scan base-package="com.baidu.ark.sche.operation.*"/>
-    <context:component-scan base-package="com.baidu.ark.sche.monitor.*"/>
+    <context:component-scan base-package="com.shiyue.bm.*"/>
 
     <!-- 注册拦截器 -->
     <mvc:interceptors>
-        <bean class="com.baidu.ark.sche.core.mvc.interceptor.ForwardInterceptor"/>
-        <bean class="com.baidu.ark.sche.core.mvc.interceptor.OperatorInterceptor"/>
+        <bean class="com.shiyue.bm.core.mvc.interceptor.ForwardInterceptor"/>
+        <bean class="com.shiyue.bm.core.mvc.interceptor.OperatorInterceptor"/>
     </mvc:interceptors>
 
-    <!--  定时的存活日志 -->
-    <bean class="com.baidu.ark.sche.core.system.LiveMonitor"/>
+    <bean id="liveMonitor" class="com.shiyue.bm.core.system.LiveMonitor"/>
 </beans>
